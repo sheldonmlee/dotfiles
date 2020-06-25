@@ -39,6 +39,8 @@ n ()
 
 #.dotfiles repo alias
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# show file sizes alias and sort by size
+alias sizes='du -hs .[^.]* * | sort -h'
 # nnn
 # bookmarks
 export NNN_BMS='q:~/.config/qtile/;'
