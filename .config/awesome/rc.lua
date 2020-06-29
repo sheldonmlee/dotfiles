@@ -45,6 +45,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 beautiful.init(gears.filesystem.get_configuration_dir() .. "solarized_theme.lua")
 
 -- This is used later as the default terminal and editor to run.
@@ -315,7 +316,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
-    awful.key({ modkey }, "x",
+    awful.key({ modkey, "Shift" }, "r",
               function ()
                   awful.prompt.run {
                     prompt       = "Run Lua code: ",
@@ -327,7 +328,14 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+
+	-- custom
+    awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
+              {description = "open firefox", group = "launcher"}),
+			  -- set to spawn after key release to work
+    awful.key({ modkey,           }, "x", nil, function () awful.spawn.with_shell("~/.config/awesome/screenshot.sh") end,
+              {description = "dmenu screenshot prompt", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -556,10 +564,14 @@ client.connect_signal("request::titlebars", function(c)
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
+-- client.connect_signal("mouse::enter", function(c)
+--     c:emit_signal("request::activate", "mouse_enter", {raise = false})
+-- end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- Autostart:
+awful.spawn.with_shell("~/.config/awesome/autorun.sh")
+
