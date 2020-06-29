@@ -16,13 +16,13 @@ theme.font          = "Arial"
 theme.bg_normal     = "#002b36"
 theme.bg_focus      = "#073642"
 theme.bg_urgent     = "#dc322f"
-theme.bg_minimize   = "#002b36"
+theme.bg_minimize   = "#586e75"
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = "#93a1a1"
 theme.fg_focus      = "#93a1a1"
 theme.fg_urgent     = "#93a1a1"
-theme.fg_minimize   = "#586e75"
+theme.fg_minimize   = "#002b36"
 
 theme.useless_gap   = dpi(4)
 theme.border_width  = dpi(1)
