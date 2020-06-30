@@ -64,18 +64,18 @@ altkey = "Mod1"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     -- awful.layout.suit.floating,
-    awful.layout.suit.tile,
+    -- awful.layout.suit.tile,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
-    -- awful.layout.suit.spiral.dwindle,
+    --  awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.corner.nw,
     awful.layout.suit.max,
     -- awful.layout.suit.max.fullscreen,
     -- awful.layout.suit.magnifier,
-    -- awful.layout.suit.corner.nw,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
@@ -205,7 +205,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+			-- mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
@@ -231,7 +231,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey, "Control" }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -334,12 +334,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
               {description = "open firefox", group = "launcher"}),
 			  -- set to spawn after key release to work
-    awful.key({ modkey,           }, "x", nil, function () awful.spawn.with_shell("~/.config/awesome/screenshot.sh") end,
+    awful.key({ modkey, "Shift" }, "s", nil, function () awful.spawn.with_shell("~/.config/awesome/screenshot.sh") end,
               {description = "dmenu screenshot prompt", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
+    awful.key({ modkey, "Control" }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
             c:raise()
@@ -382,13 +382,25 @@ clientkeys = gears.table.join(
         {description = "(un)maximize horizontally", group = "client"})
 )
 
+-- DEFAULT!!! {{{ 
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+-- }}}
+
+-- Binds to asdfz
+local bindings = {
+	"a",
+	"s",
+	"d",
+	"f",
+	"z",
+}
+
+for i = 1, #bindings do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
-        awful.key({ modkey }, "#" .. i + 9,
+        awful.key({ modkey }, bindings[i],
                   function ()
                         local screen = awful.screen.focused()
                         local tag = screen.tags[i]
@@ -398,7 +410,7 @@ for i = 1, 9 do
                   end,
                   {description = "view tag #"..i, group = "tag"}),
         -- Toggle tag display.
-        awful.key({ altkey }, "#" .. i + 9,
+        awful.key({ altkey }, bindings[i],
                   function ()
                       local screen = awful.screen.focused()
                       local tag = screen.tags[i]
@@ -408,7 +420,7 @@ for i = 1, 9 do
                   end,
                   {description = "toggle tag #" .. i, group = "tag"}),
         -- Move client to tag.
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
+        awful.key({ modkey, "Shift" }, bindings[i],
                   function ()
                       if client.focus then
                           local tag = client.focus.screen.tags[i]
@@ -419,7 +431,7 @@ for i = 1, 9 do
                   end,
                   {description = "move focused client to tag #"..i, group = "tag"}),
         -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
+        awful.key({ modkey, "Control", "Shift" }, bindings[i],
                   function ()
                       if client.focus then
                           local tag = client.focus.screen.tags[i]
@@ -506,11 +518,6 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
 	
-	-- Custom rules
-	{
-		rule = { class = "Steam"},	
-		properties = { tag = "game" }
-	},
 }
 -- }}}
 
@@ -519,7 +526,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
       and not c.size_hints.user_position
@@ -578,6 +585,27 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+-- Custom rules
+custom_rules = {
+	{
+		rule = { class = "firefox" },
+		properties = { tag = "media" }
+	},
+	
+	{
+ 		rule = { class = "discord" },	
+ 		properties = { tag = "social" }
+	},
+
+ 	{
+ 		rule = { class = "Steam" },	
+ 		properties = { tag = "game" }
+ 	},
+}
+-- concat own rules with rules
+for _,rule in pairs(custom_rules) do
+ 	table.insert(awful.rules.rules, rule)
+end
 -- Autostart:
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 
