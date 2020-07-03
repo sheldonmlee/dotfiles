@@ -41,6 +41,9 @@ n ()
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # show file sizes alias and sort by size
 alias sizes='du -hs .[^.]* * | sort -h'
+# tmux '-2' colors
+alias tmux="tmux -2"
+
 # nnn
 # bookmarks
 export NNN_BMS='q:~/.config/qtile/;'
