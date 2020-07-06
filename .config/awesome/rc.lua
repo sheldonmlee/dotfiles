@@ -330,11 +330,15 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
-	-- custom
+	-- Custom Bindings
     awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
               {description = "open firefox", group = "launcher"}),
+    awful.key({ modkey,           }, "e", function () awful.spawn("alacritty -e nnn") end,
+              {description = "open firefox", group = "launcher"}),
+    awful.key({ modkey, "Shift" }, "e", function () awful.spawn("nemo") end,
+              {description = "open firefox", group = "launcher"}),
 			  -- set to spawn after key release to work
-    awful.key({ modkey, "Shift" }, "s", nil, function () awful.spawn.with_shell("~/.config/awesome/screenshot.sh") end,
+    awful.key({ modkey, }, "q", nil, function () awful.spawn.with_shell("~/.config/awesome/screenshot.sh") end,
               {description = "dmenu screenshot prompt", group = "launcher"})
 )
 
