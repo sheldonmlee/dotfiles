@@ -276,7 +276,10 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey,           }, "Return", function () awful.spawn(
+		terminal, {
+		tag = tag.selected, 
+		}) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -590,26 +593,32 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- }}}
 
 -- Custom rules
+startup_screen = 1;
 custom_rules = {
 	{
+		rule = { class = "Alacritty" },
+		properties = { screen = startup_screen }
+	},
+	{
 		rule = { class = "firefox" },
-		properties = { tag = "media" }
+		properties = { tag = "media", screen = startup_screen }
 	},
 	
 	{
  		rule = { class = "discord" },	
- 		properties = { tag = "social" }
+ 		properties = { tag = "social", screen = startup_screen }
 	},
 
  	{
  		rule = { class = "Steam" },	
- 		properties = { tag = "game" }
+ 		properties = { tag = "game", screen = startup_screen }
  	},
 }
 -- concat own rules with rules
 for _,rule in pairs(custom_rules) do
  	table.insert(awful.rules.rules, rule)
 end
+
 -- Autostart:
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 
