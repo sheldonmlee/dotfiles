@@ -171,7 +171,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "term", "media", "social", "game", "misc" }, s, awful.layout.layouts[1])
+		
+	awful.tag({ "term", "media", "social", "game", "misc" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -342,7 +343,9 @@ globalkeys = gears.table.join(
               {description = "open firefox", group = "launcher"}),
 			  -- set to spawn after key release to work
     awful.key({ modkey, }, "q", nil, function () awful.spawn.with_shell("~/.config/awesome/screenshot.sh") end,
-              {description = "dmenu screenshot prompt", group = "launcher"})
+              {description = "dmenu screenshot prompt", group = "launcher"}),
+	awful.key({ modkey, }, " ", function() awful.spawn.with_shell("~/.config/awesome/layout.sh") end,
+			  { description = "change keyboard layout", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
