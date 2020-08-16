@@ -334,7 +334,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
-	-- Custom Bindings
+	-- Custom bindings
     awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
               {description = "open firefox", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.spawn("alacritty -e nnn") end,
@@ -346,6 +346,9 @@ globalkeys = gears.table.join(
               {description = "dmenu screenshot prompt", group = "launcher"}),
 	awful.key({ modkey, }, " ", function() awful.spawn.with_shell("~/.config/awesome/layout.sh") end,
 			  { description = "change keyboard layout", group = "launcher"})
+			  -- layout
+	-- awful.key({ modkey, altkey, }, "Tab", function() awful.spawn.with_shell("~/.config/awesome/layout.sh") end,
+	-- 		  { description = "change to floating", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -441,7 +444,7 @@ for i = 1, #bindings do
                   end,
                   {description = "move focused client to tag #"..i, group = "tag"}),
         -- Toggle tag on focused client.
-        awful.key({ modkey, "Control", "Shift" }, bindings[i],
+        awful.key({ altkey, "Shift" }, bindings[i],
                   function ()
                       if client.focus then
                           local tag = client.focus.screen.tags[i]
