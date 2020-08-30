@@ -401,13 +401,22 @@ clientkeys = gears.table.join(
 -- This should map on the top row of your keyboard, usually 1 to 9.
 -- }}}
 
--- Binds to asdfz
+-- Binds to 12345 
+--local bindings = {
+--	"#10",
+--	"#11",
+--	"#12",
+--	"#13",
+--	"#14",
+--}
+
+-- Binds to asdfz on qwerty
 local bindings = {
-	"a",
-	"s",
-	"d",
-	"f",
-	"z",
+	"#38",
+	"#39",
+	"#40",
+	"#41",
+	"#52",
 }
 
 for i = 1, #bindings do
