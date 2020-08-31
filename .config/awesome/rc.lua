@@ -317,8 +317,9 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+	-- Unbound to favour "Menu bar boune below.
+    --awful.key({ modkey },            "#27",     function () awful.screen.focused().mypromptbox:run() end,
+    --          {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey, "Shift" }, "r",
               function ()
@@ -331,7 +332,8 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+	-- Bound to keycode 27, which is 'r' on qwerty for consistency across layouts.
+    awful.key({ modkey }, "#27", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
 	-- Custom bindings
