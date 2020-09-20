@@ -1,1 +1,1 @@
-export $TERM=screen-256color
+term screen-256color
