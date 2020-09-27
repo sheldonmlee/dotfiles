@@ -16,7 +16,7 @@ export EDITOR=vim
 export VISUAL=vim
 
 # include bash aliases
-source .bash_aliases
+source ~/.bash_aliases
 
 # custom scripts
 source ~/.custom_bash_scripts
