@@ -332,8 +332,7 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-	-- Bound to keycode 27, which is 'r' on qwerty for consistency across layouts.
-    awful.key({ modkey }, "#27", function() menubar.show() end,
+    awful.key({ modkey }, " ", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
 	-- Custom bindings
@@ -346,7 +345,7 @@ globalkeys = gears.table.join(
 			  -- set to spawn after key release to work
     awful.key({ modkey, }, "q", nil, function () awful.spawn.with_shell("~/.config/awesome/screenshot.sh") end,
               {description = "dmenu screenshot prompt", group = "launcher"}),
-	awful.key({ modkey, }, " ", function() awful.spawn.with_shell("~/.config/awesome/layout.sh") end,
+	awful.key({ modkey, }, "1", function() awful.spawn.with_shell("~/.config/awesome/layout.sh") end,
 			  { description = "change keyboard layout", group = "launcher"})
 			  -- layout
 	-- awful.key({ modkey, altkey, }, "Tab", function() awful.spawn.with_shell("~/.config/awesome/layout.sh") end,
@@ -368,7 +367,7 @@ clientkeys = gears.table.join(
               {description = "move to master", group = "client"}),
     awful.key({ modkey,           }, "o",      function (c) c:move_to_screen()               end,
               {description = "move to screen", group = "client"}),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
+    awful.key({ modkey, "Control" }, "t",      function (c) c.ontop = not c.ontop            end,
               {description = "toggle keep on top", group = "client"}),
     awful.key({ modkey,           }, "n",
         function (c)
@@ -413,12 +412,21 @@ clientkeys = gears.table.join(
 --}
 
 -- Binds to asdfz on qwerty
+--local bindings = {
+--	"#38",
+--	"#39",
+--	"#40",
+--	"#41",
+--	"#52",
+--}
+
+-- Bings to arstz on
 local bindings = {
-	"#38",
-	"#39",
-	"#40",
-	"#41",
-	"#52",
+	"a",
+	"r",
+	"s",
+	"t",
+	"z",
 }
 
 for i = 1, #bindings do
