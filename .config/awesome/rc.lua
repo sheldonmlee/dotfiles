@@ -332,11 +332,18 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, " ", function() menubar.show() end,
+    awful.key({ modkey }, "space", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
 	-- Custom bindings
-	awful.key({ modkey, }, "l", function () awful.spawn("xlock") end,
+	
+	-- Volume
+	awful.key({ modkey, }, "Up", function () awful.spawn("amixer set Master 5%+") end,
+			  {description = "Volume up", group = "media"}),
+	awful.key({ modkey, }, "Down", function () awful.spawn("amixer set Master 5%-") end,
+			  {description = "Volume down", group = "media"}),
+
+	awful.key({ modkey, }, "x", function () awful.spawn("xlock") end,
 			  {description = "xlock", group = "launcher"}),
     awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
               {description = "open firefox", group = "launcher"}),
@@ -344,6 +351,7 @@ globalkeys = gears.table.join(
               {description = "open nnn", group = "launcher"}),
     awful.key({ modkey, "Shift" }, "e", function () awful.spawn("nemo") end,
               {description = "open nemo", group = "launcher"}),
+
 			  -- set to spawn after key release to work
     awful.key({ modkey, }, "q", nil, function () awful.spawn.with_shell("~/.config/awesome/screenshot.sh") end,
               {description = "dmenu screenshot prompt", group = "launcher"}),
