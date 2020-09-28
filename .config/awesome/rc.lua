@@ -82,6 +82,30 @@ awful.layout.layouts = {
 }
 -- }}}
 
+-- {{{ Custom function definitions
+function volume (delta)
+	local volume_command = [[bash -c '
+sleep 0.01
+amixer sget Master | grep 'Left:'
+']]
+	t_out = 0.5
+
+	if delta < 0 then sign = "-" else sign = "+" end
+	str = string.format("amixer set Master %01d%%%s", math.abs(delta), sign)
+	awful.spawn(str) 
+
+	awful.spawn.with_line_callback(volume_command, {
+		stdout = function(line)
+			str = string.match(line, '%d*%%')
+			naughty.notify { text = str, title = "Volume", timeout = t_out }
+		end,
+		stderr = function(line)
+			naughty.notify { text = "ERR:"..line}
+		end,
+	})
+end
+-- }}}
+
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
@@ -321,7 +345,7 @@ globalkeys = gears.table.join(
     --awful.key({ modkey },            "#27",     function () awful.screen.focused().mypromptbox:run() end,
     --          {description = "run prompt", group = "launcher"}),
 
-    awful.key({ modkey, "Shift" }, "r",
+    awful.key({ modkey, "Shift" }, "space",
               function ()
                   awful.prompt.run {
                     prompt       = "Run Lua code: ",
@@ -338,9 +362,11 @@ globalkeys = gears.table.join(
 	-- Custom bindings
 	
 	-- Volume
-	awful.key({ modkey, }, "Up", function () awful.spawn("amixer set Master 5%+") end,
+	awful.key({ modkey, }, "Up", 
+			  function() volume(5) end,
 			  {description = "Volume up", group = "media"}),
-	awful.key({ modkey, }, "Down", function () awful.spawn("amixer set Master 5%-") end,
+	awful.key({ modkey, }, "Down", 
+			  function() volume(-5) end,
 			  {description = "Volume down", group = "media"}),
 
 	awful.key({ modkey, }, "x", function () awful.spawn("xlock") end,
