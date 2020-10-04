@@ -16,10 +16,16 @@ export EDITOR=vim
 export VISUAL=vim
 
 # include bash aliases
-source ~/.bash_aliases
+if [ -f ~/.bash_aliases ]
+then
+	source ~/.bash_aliases
+fi
 
 # custom scripts
-source ~/.custom_bash_scripts
+if [ -f ~/.custom_bash_scripts ]
+then
+	source ~/.custom_bash_scripts
+fi
 
 # for nnn file manager
 n ()
