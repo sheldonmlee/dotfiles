@@ -114,3 +114,8 @@ n ()
     fi
 }
 
+# nnn
+# bookmarks
+export NNN_BMS='q:~/.config/qtile/;'
+# use trashcan
+export NNN_TRASH=1
