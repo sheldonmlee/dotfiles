@@ -20,3 +20,15 @@ cfdir()
 {
 	cd $HOME/.config/$1
 }
+
+#sshfs into newnumyspace
+nnms_fs()
+{
+	dir_name="newnumyspace"
+	if [ ! -d $PWD/$dirname ]
+	then
+		echo "Created new directory $dirname at ${PWD}"
+	fi
+	sshfs unn_w19014537@newnumyspace.co.uk:/home/unn_w19014537/ newnumyspace/
+	echo "Mounted at $PWD/$dirname."
+}
