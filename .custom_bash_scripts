@@ -25,10 +25,11 @@ cfdir()
 nnms_fs()
 {
 	dir_name="newnumyspace"
-	if [ ! -d $PWD/$dirname ]
+	if [ ! -d $PWD/$dir_name ]
 	then
-		echo "Created new directory $dirname at ${PWD}"
+		mkdir $dir_name
+		echo "Created new directory $dir_name at ${PWD}"
 	fi
-	sshfs unn_w19014537@newnumyspace.co.uk:/home/unn_w19014537/ newnumyspace/
-	echo "Mounted at $PWD/$dirname."
+	sshfs unn_w19014537@newnumyspace.co.uk:/home/unn_w19014537/ $dir_name/
+	echo "Mounted at $PWD/$dir_name."
 }
