@@ -13,6 +13,9 @@ set tabstop=4
 set shiftwidth=4
 filetype plugin indent on
 
+" search
+set incsearch
+
 " theme
 set background=dark
 colorscheme solarized
