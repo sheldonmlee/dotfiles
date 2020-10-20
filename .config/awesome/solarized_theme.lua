@@ -48,8 +48,11 @@ theme.taglist_bg_focus = "#859900"
 theme.taglist_fg_focus = "#002b36"
 theme.taglist_fg_empty = "#586e75"
 
+-- Tasklist
+theme.tasklist_disable_icon = true
+
 -- Generate taglist squares:
-local taglist_square_size = dpi(5)
+local taglist_square_size = dpi(3)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
     )
