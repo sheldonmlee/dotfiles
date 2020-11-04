@@ -5,7 +5,10 @@ options="
 2) Colemak
 "
 
-option=$(echo -e $options | dmenu -i)
+# dmenu
+#option=$(echo -e $options | dmenu -i)
+# rofi emulation of dmenu
+option=$(echo "1) a|2) colemak" | rofi -dmenu -sep '|' -i)
 
 echo $option
 
