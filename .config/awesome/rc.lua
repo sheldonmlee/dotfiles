@@ -355,10 +355,14 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+	-- {{{ App launchers, use either one:
     -- Menubar
-    awful.key({ modkey }, "space", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
-
+    --awful.key({ modkey }, "space", function() menubar.show() end,
+    --          {description = "show the menubar", group = "launcher"}),
+	-- rofi
+    awful.key({ modkey }, "space", function() awful.spawn("rofi -show run") end,
+              {description = "rofi", group = "launcher"}),
+	-- }}}
 	-- Custom bindings
 	
 	-- Volume
