@@ -33,3 +33,9 @@ nnms_fs()
 	sshfs unn_w19014537@newnumyspace.co.uk:/home/unn_w19014537/ $dir_name/
 	echo "Mounted at $PWD/$dir_name."
 }
+
+#pacman list sizes
+pacsizes()
+{
+	pacman -Qi $1 | awk '/^Name/{name=$3} /^Installed Size/{size=$4$5; print size, name;}' | sort -h
+}
