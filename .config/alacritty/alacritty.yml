@@ -76,7 +76,7 @@ colors: *dark
 
 font:
   normal:
-    family: Source Code Pro
+    family: Source Code Pro SemiBold
     style: Regular
 
   bold:
