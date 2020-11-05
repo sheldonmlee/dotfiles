@@ -8,7 +8,7 @@ options="
 # dmenu
 #option=$(echo -e $options | dmenu -i)
 # rofi emulation of dmenu
-option=$(echo "1) a|2) colemak" | rofi -dmenu -sep '|' -i)
+option=$(echo "1) US|2) Colemak" | rofi -dmenu -sep '|' -i)
 
 echo $option
 
