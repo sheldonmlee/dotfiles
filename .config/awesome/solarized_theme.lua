@@ -11,24 +11,43 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "Arial"
+local solarized = {
+    ["base03"]  =   "#002b36",
+    ["base02"]  =   "#073642",
+    ["base01"]  =   "#586e75",
+    ["base00"]  =   "#657b83",
+    ["base0"]   =   "#839496",
+    ["base1"]   =   "#93a1a1",
+    ["base2"]   =   "#eee8d5",
+    ["base3"]   =   "#3d36e3",
+    ["yellow"]  =   "#b58900",
+    ["orange"]  =   "#cb4b16",
+    ["red"]     =   "#dc233f",
+    ["magenta"] =   "#d33682",
+    ["violet"]  =   "#6c71c4",
+    ["blue"]    =   "#268bd2",
+    ["cyan"]    =   "#2aa198",
+    ["green"]   =   "#859900",
+}
 
-theme.bg_normal     = "#002b36"
-theme.bg_focus      = "#073642"
-theme.bg_urgent     = "#dc322f"
-theme.bg_minimize   = "#586e75"
-theme.bg_systray    = theme.bg_normal
+theme.font          = "Source Code Pro SemiBold 12"
 
-theme.fg_normal     = "#93a1a1"
-theme.fg_focus      = "#93a1a1"
-theme.fg_urgent     = "#93a1a1"
-theme.fg_minimize   = "#002b36"
+theme.bg_normal     = solarized["base03"]
+theme.bg_focus      = solarized["base02"]
+theme.bg_urgent     = solarized["orange"]
+theme.bg_minimize   = solarized["base03"]
+theme.bg_systray    = solarized["base03"]
+
+theme.fg_normal     = solarized["cyan"]
+theme.fg_focus      = solarized["magenta"]
+theme.fg_urgent     = solarized["base03"]
+theme.fg_minimize   = solarized["base00"]
 
 theme.useless_gap   = dpi(4)
 theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#859900"
-theme.border_marked = "#91231c"
+theme.border_normal = solarized["base01"]
+theme.border_focus  = solarized["orange"]
+theme.border_marked = solarized["red"]
 
 -- There are other variable sets
 -- overriding the default one when
@@ -44,9 +63,9 @@ theme.border_marked = "#91231c"
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Taglist colors:
-theme.taglist_bg_focus = "#859900"
-theme.taglist_fg_focus = "#002b36"
-theme.taglist_fg_empty = "#586e75"
+theme.taglist_bg_focus = solarized["green"]
+theme.taglist_fg_focus = solarized["base03"]
+theme.taglist_fg_empty = solarized["base01"]
 
 -- Tasklist
 theme.tasklist_disable_icon = true
