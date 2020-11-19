@@ -57,6 +57,6 @@ n ()
     fi
 }
 # bookmarks
-export NNN_BMS='q:~/.config/qtile/;'
+export NNN_BMS='p:~/dev/Uni/Programming/;'
 # use trashcan
 export NNN_TRASH=1
