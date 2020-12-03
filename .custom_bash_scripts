@@ -25,13 +25,17 @@ cfdir()
 nnms_fs()
 {
 	dir_name="newnumyspace"
-	if [ ! -d $PWD/$dir_name ]
+	path="${HOME}/dev"
+	if [ ! -d $path/$dir_name ]
 	then
-		mkdir $dir_name
-		echo "Created new directory $dir_name at ${PWD}"
+		mkdir $path/$dir_name
+		echo "Created new directory $dir_name at $path"
 	fi
-	sshfs unn_w19014537@newnumyspace.co.uk:/home/unn_w19014537/ $dir_name/
-	echo "Mounted at $PWD/$dir_name."
+	sshfs unn_w19014537@newnumyspace.co.uk:/home/unn_w19014537/ $path/$dir_name/
+	if [ $? -eq 0 ] 
+	then
+		echo "Mounted at $path/$dir_name."
+	fi
 }
 
 #pacman list sizes
