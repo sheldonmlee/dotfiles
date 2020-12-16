@@ -8,3 +8,5 @@ alias tmux="tmux -2"
 alias gittree="git log --all --decorate --oneline --graph"
 # open spotify web client on firefox
 alias spw="firefox --new-window https://open.spotify.com/"
+# run pulsemixer
+alias mixer="pulsemixer"
