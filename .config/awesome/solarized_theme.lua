@@ -125,7 +125,7 @@ theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
         theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
 		-- theme.wallpaper = themes_path.."default/background.png"
-		theme.wallpaper = "~/wallpaper/solarized.png"
+                theme.wallpaper = "~/wallpaper/ff.jpg"
 
         -- You can use your own layout icons like this:
         theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
