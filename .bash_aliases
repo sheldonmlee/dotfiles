@@ -6,3 +6,5 @@ alias sizes='du -hs .[^.]* * | sort -h'
 alias tmux="tmux -2"
 # bash tree alias
 alias gittree="git log --all --decorate --oneline --graph"
+# open spotify web client on firefox
+alias spw="firefox --new-window https://open.spotify.com/"
