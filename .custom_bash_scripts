@@ -7,12 +7,14 @@ s_scrot() {
 	name=$(date +${date_format}_sel.png)
 	path="${scrot_dir}${name}"
 	scrot -s $path
+	xclip -sel clip $path -t image/png
 }
 
 f_scrot() {
 	name=$(date +${date_format}_full.png)
 	path="${scrot_dir}${name}"
 	scrot $path
+	xclip -sel clip $path -t image/png
 }
 
 #cd into config dir
