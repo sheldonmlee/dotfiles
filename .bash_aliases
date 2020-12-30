@@ -10,3 +10,5 @@ alias gittree="git log --all --decorate --oneline --graph"
 alias spw="firefox --new-window https://open.spotify.com/"
 # run pulsemixer
 alias mixer="pulsemixer"
+# turn screen off
+alias screenoff="sleep 1; xset dpms force off"
