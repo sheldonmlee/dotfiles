@@ -57,6 +57,6 @@ n ()
     fi
 }
 # bookmarks
-export NNN_BMS='p:~/dev/Uni/Programming/;'
+export NNN_BMS='p:~/dev/Uni/;'
 # use trashcan
 export NNN_TRASH=1
