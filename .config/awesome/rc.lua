@@ -373,8 +373,6 @@ globalkeys = gears.table.join(
 			  function() volume(-5) end,
 			  {description = "Volume down", group = "media"}),
 
-	awful.key({ modkey, }, "x", function () awful.spawn("xlock") end,
-			  {description = "xlock", group = "launcher"}),
     awful.key({ modkey,           }, "b", function () awful.spawn("firefox") end,
               {description = "open firefox", group = "launcher"}),
     awful.key({ modkey,           }, "e", function () awful.spawn("alacritty -e nnn -A") end,
